@@ -125,9 +125,9 @@ static int sof_module_memcpy(struct adsp_dev *adsp,
 		case SOF_FW_BLK_TYPE_IRAM:
 		case SOF_FW_BLK_TYPE_DRAM:
 		case SOF_FW_BLK_TYPE_SRAM:
-			fprintf(stdout, "data: 0x%x size 0x%x\n",
+			fprintf(stdout, "data: 0x%x size 0x%x type %d\n",
 				board->mem_zones[block->type].base + block->offset - board->mem_zones[block->type].host_offset,
-				block->size);
+				block->size, block->type);
 
 			mem = adsp_get_mem_space(adsp, board->mem_zones[block->type].base + block->offset - board->mem_zones[block->type].host_offset);
 			if (!mem)

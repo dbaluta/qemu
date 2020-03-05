@@ -84,6 +84,8 @@ ssize_t load_image_size(const char *filename, void *addr, size_t size)
     int fd;
     ssize_t actsize, l = 0;
 
+    printf("want to open %s, size %ld\n", filename, size);
+
     fd = open(filename, O_RDONLY | O_BINARY);
     if (fd < 0) {
         return -1;
@@ -93,6 +95,7 @@ ssize_t load_image_size(const char *filename, void *addr, size_t size)
         l += actsize;
     }
 
+    printf("this is how much we could read %ld\n", l);
     close(fd);
 
     return actsize < 0 ? -1 : l;
